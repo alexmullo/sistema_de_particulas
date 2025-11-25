@@ -1,0 +1,10 @@
+*{
+	margin: none;
+	padding: none;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+body {
+  background: #000000;
+}
