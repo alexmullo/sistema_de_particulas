@@ -35,7 +35,7 @@ class Particula {
   display() {
     let diamFinal = map(this.tVida, this.tVidaInicial, 0, this.diam, this.diam * 2.5);
 
-    let parpadeo = map(sin(frameCount * 7.5 + this.pos.x * 1.1), -1, 1, 40, 255);
+    let parpadeo = map(sin(frameCount * 25.5 + this.pos.x * 1.1), -1, 1, 40, 255);
     let cEffect = color(red(this.c), green(this.c), blue(this.c), parpadeo);
 
     fill(red(this.c), green(this.c), blue(this.c), parpadeo * 0.22);
