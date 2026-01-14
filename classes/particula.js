@@ -1,3 +1,4 @@
+// --- TU CLASE ORIGINAL (CON LOGS REACTIVADOS) ---
 class Particula {
   constructor(_x, _y) {
     this.pos = createVector(_x, _y);
@@ -18,7 +19,9 @@ class Particula {
 
     this.c = random(palettes);
     this.halo = random(12, 26);
-    console.log('Hola, estoy viva');
+    
+    // ¡MENSAJE DE NACIMIENTO RESTAURADO!
+    console.log('Hola, estoy viva'); 
   }
 
   update() {
@@ -27,7 +30,11 @@ class Particula {
     this.tVida--;
 
     if (this.tVida <= 0 || this.pos.y < 0 || this.pos.x < 0 || this.pos.x > width) {
-      if (!this.estaMuerta) console.log('Uuuups, me morí :(');
+      // ¡MENSAJE DE MUERTE RESTAURADO!
+      // Usamos el if para que solo lo diga una vez justo antes de morir
+      if (!this.estaMuerta) {
+          console.log('Uuuups, me morí :(');
+      }
       this.estaMuerta = true;
     }
   }
@@ -48,5 +55,38 @@ class Particula {
  
     fill(255, parpadeo * 0.6);
     ellipse(this.pos.x, this.pos.y, diamFinal * 0.48);
+  }
+}
+
+// --- NUEVA CLASE DE BRILLO (Esta la dejamos silenciosa para no saturar) ---
+class ParticulaBrillo {
+  constructor(_x, _y) {
+    this.pos = createVector(_x, _y);
+    this.vel = p5.Vector.random2D();
+    this.vel.mult(random(2, 5)); 
+    this.acc = createVector(0, 0); 
+    this.alpha = 255;
+    this.size = random(2, 5); 
+  }
+
+  update() {
+    this.pos.add(this.vel);
+    this.vel.mult(0.95);
+    this.alpha -= 5;
+  }
+
+  display() {
+    noStroke();
+    fill(255, 255, 255, this.alpha);
+    
+    drawingContext.shadowBlur = 15;
+    drawingContext.shadowColor = 'rgba(255, 255, 255, 0.8)';
+    
+    ellipse(this.pos.x, this.pos.y, this.size);
+    drawingContext.shadowBlur = 0;
+  }
+
+  estaMuerta() {
+    return this.alpha < 0;
   }
 }
