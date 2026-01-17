@@ -1,4 +1,3 @@
-// --- TU CLASE ORIGINAL (CON LOGS REACTIVADOS) ---
 class Particula {
   constructor(_x, _y) {
     this.pos = createVector(_x, _y);
@@ -20,7 +19,6 @@ class Particula {
     this.c = random(palettes);
     this.halo = random(12, 26);
     
-    // ¡MENSAJE DE NACIMIENTO RESTAURADO!
     console.log('Hola, estoy viva'); 
   }
 
@@ -30,8 +28,7 @@ class Particula {
     this.tVida--;
 
     if (this.tVida <= 0 || this.pos.y < 0 || this.pos.x < 0 || this.pos.x > width) {
-      // ¡MENSAJE DE MUERTE RESTAURADO!
-      // Usamos el if para que solo lo diga una vez justo antes de morir
+
       if (!this.estaMuerta) {
           console.log('Uuuups, me morí :(');
       }
@@ -58,7 +55,6 @@ class Particula {
   }
 }
 
-// --- NUEVA CLASE DE BRILLO (Esta la dejamos silenciosa para no saturar) ---
 class ParticulaBrillo {
   constructor(_x, _y) {
     this.pos = createVector(_x, _y);
